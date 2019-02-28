@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="54301" started-at="2019-02-28T09:01:45Z" finished-at="2019-02-28T09:02:40Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="54301" started-at="2019-02-28T09:01:45Z" finished-at="2019-02-28T09:02:40Z">
+      <class name="com.medcare.TestScripts.MedCareEncounterCreator">
+        <test-method status="PASS" signature="setUpDriver()[pri:0, instance:com.medcare.TestScripts.MedCareEncounterCreator@281e3708]" name="setUpDriver" is-config="true" duration-ms="16646" started-at="2019-02-28T09:01:45Z" description="Search patient and create encounter" finished-at="2019-02-28T09:02:02Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpDriver -->
+        <test-method status="PASS" signature="CreateEncounter()[pri:0, instance:com.medcare.TestScripts.MedCareEncounterCreator@281e3708]" name="CreateEncounter" duration-ms="37627" started-at="2019-02-28T09:02:02Z" description="Create Encounter by searching patient" finished-at="2019-02-28T09:02:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CreateEncounter -->
+      </class> <!-- com.medcare.TestScripts.MedCareEncounterCreator -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
