@@ -1,0 +1,100 @@
+
+//Browser
+
+//browser=PhantomJs
+//browser=Headless
+browser=Chrome
+//browser=Firefox
+//browser=IE
+ 
+ 
+//Drivers
+//ChromeDriver=C:\\DedicatedLibraryFolderForNetbeansProjects\\chromedriver_win32\\chromedriver.exe
+//ChromeDriver=D:\\SD_Workspace\\WebdriverTest\\driverExecutables\\chromedriver.exe
+ChromeDriver=C:\\repo_clinicare2.0_automation\\UMS\\driverExecutables\\chromedriver.exe
+IEDriver=C:\\DedicatedLibraryFolderForNetbeansProjects\\IEDriverServer_x64_3.4.0\\IEDriverServer.exe
+
+//Application URL
+
+//clinicianurl=http://hopq.sdglobaltech.com/Clinician/#/
+clinicianurl=http://54.245.144.104/Clinicare/#/
+radiologisturl=http://hopq.sdglobaltech.com/Radiologist/#/
+
+clinicareproducttesturl=http://54.245.144.104/Clinicare/#/
+cvhisurl=http://his-test.us-west-2.elasticbeanstalk.com/#/login
+
+//Login Credentials
+//username=access_234
+//password=password_234
+//unit=HopQ
+
+//Login Credentials
+username=8@thoneh.com
+password=abcd@1234
+unit=Thoneh
+
+postComment=rating 2 entered
+
+//for MRN Search
+MRN = 467257
+
+//for Name Search
+NAME= AUTO THONEH PAT
+
+//Medication Details
+M_Name=Paracetamol 500mg Tablet
+M_Frequency=2 Times Daily
+
+Electronic_Signature=testSign2
+
+//Temperature Vitals Details
+TemperatureValue = 36.5
+TemperatureQualifier = Oral
+TemperatureComment = temperaturecomment
+
+//BloodPressure Details
+BloodPressureComment = bloodpressurecomment
+DiastolicQualifier = Sitting
+SystolicQualifier = Standing
+DiastolicValue = 72
+SystolicValue = 118
+
+//Pulse Vitals Details
+PulseValue = 72
+PulseQualifier = Radial Artery(wrist)
+PulseComment = pulsecomment
+
+//Height Vitals Details
+HeightValue = 94
+HeightComment = heightcomment
+
+//Weight Vitals Details
+WeightValue = 74
+WeightComment = weightcomment
+
+
+//PainScore Vitals Details
+PainScoreValue = 8
+PainScoreComment = painscorecomment
+
+
+//PulseOximetry Vitals Details
+PulseOximetryValue = 96
+PulseOximetryComment = pulseoximetrycomment
+
+//Visual Acuity
+RVValue = 3
+LVValue = 4
+RVPHValue = 30
+LVPHValue = 40
+RVQualifier = With glass
+LVQualifier = Without glass
+VisualAcuityComment = visualacuitycomment
+
+
+//to confirm Version released
+//Date 2.0.4 - ??
+versionreleased = 2.0.4 
+
+
+

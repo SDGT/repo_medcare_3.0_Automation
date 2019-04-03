@@ -46,7 +46,7 @@ public class MedcareRegistrationCreator
 		final MedcareRegistrationPage Registration = new MedcareRegistrationPage(driver);
 		Registration.fetchingUnitName();	
 		Registration.BasicInformation();
-		//Registration.MrnContinueYes();
+		Registration.MrnContinueYes();
     }
 	
 	

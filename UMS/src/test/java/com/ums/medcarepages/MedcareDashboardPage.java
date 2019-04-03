@@ -22,9 +22,9 @@ public class MedcareDashboardPage {
 	@FindBy(how = How.XPATH, using = "//mat-icon[@mattooltip='Menu']")
 	public WebElement btn_clickOnMenu;
 	
-		//Clicking on Dashboard App button 
-		@FindBy(how = How.XPATH, using = "//span[contains(text(),'Out Patient Department')]")
-		public WebElement btn_clickOnOPD;
+	//Clicking on Dashboard App button 
+	@FindBy(how = How.XPATH, using = "//span[contains(text(),'Out Patient Department')]")
+	public WebElement btn_clickOnOPD;
 	 		
 	public MedcareDashboardPage(WebDriver driver) 
 	{

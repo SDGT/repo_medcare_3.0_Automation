@@ -3,74 +3,24 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="example.AddOrderSet">
+      <class name="com.medcare.TestScripts.MedcareRegistrationCreator">
         <methods>
-          <include name="login"/>
+          <include name="setUpDriver"/>
+          <include name="OutPatientRegistration"/>
+        </methods>
+      </class> <!-- com.medcare.TestScripts.MedcareRegistrationCreator -->
+      <class name="com.medcare.TestScripts.MedCareEncounterCreator">
+        <methods>
+          <include name="CreateEncounter"/>
           <include name="setUpDriver"/>
         </methods>
-      </class> <!-- example.AddOrderSet -->
-      <class name="testCases.login">
+      </class> <!-- com.medcare.TestScripts.MedCareEncounterCreator -->
+      <class name="com.medcare.TestScripts.MedCareRegEncCreator">
         <methods>
-          <include name="setUp"/>
-          <include name="login"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- testCases.login -->
-      <class name="example.NewTest">
-        <methods>
-          <include name="generateReportLog"/>
-          <include name="closeBrwoser"/>
-          <include name="register"/>
-          <include name="createReportSetup"/>
-          <include name="login"/>
-          <include name="logout"/>
-          <include name="cleanup"/>
           <include name="setUpDriver"/>
+          <include name="RegistrationEncounterCreation"/>
         </methods>
-      </class> <!-- example.NewTest -->
-      <class name="testCases.RegisterNewMalaysianPatientMedcare">
-        <methods>
-          <include name="tearDown"/>
-          <include name="setUp"/>
-          <include name="RegisterNewMalaysianPatientMedcare"/>
-        </methods>
-      </class> <!-- testCases.RegisterNewMalaysianPatientMedcare -->
-      <class name="testCases.CVLoginLogout">
-        <methods>
-          <include name="CVLoginLogout"/>
-          <include name="tearDown"/>
-          <include name="setUpDriver"/>
-        </methods>
-      </class> <!-- testCases.CVLoginLogout -->
-      <class name="testCases.clinicarelogin">
-        <methods>
-          <include name="setUp"/>
-          <include name="tearDown"/>
-          <include name="clinicarelogin"/>
-        </methods>
-      </class> <!-- testCases.clinicarelogin -->
-      <class name="testCases.VerifyLoginLogoutRadiologist">
-        <methods>
-          <include name="closeBrwoser"/>
-          <include name="login"/>
-          <include name="setUpDriver"/>
-          <include name="logout"/>
-        </methods>
-      </class> <!-- testCases.VerifyLoginLogoutRadiologist -->
-      <class name="testCases.Try">
-        <methods>
-          <include name="setUp"/>
-          <include name="tearDown"/>
-          <include name="sss"/>
-        </methods>
-      </class> <!-- testCases.Try -->
-      <class name="testCases.google">
-        <methods>
-          <include name="google"/>
-          <include name="setUp"/>
-          <include name="tearDown"/>
-        </methods>
-      </class> <!-- testCases.google -->
+      </class> <!-- com.medcare.TestScripts.MedCareRegEncCreator -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

@@ -2,12 +2,16 @@ package com.ums.medcarepages;
 
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.Set;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -127,19 +131,18 @@ public class MedcareRegistrationPage{
 	public void fetchingUnitName() throws Exception
 	{
 		Thread.sleep(8000);
-		String Actual_RegistrationURL = driver.getCurrentUrl();
-		log.info(Actual_RegistrationURL);
 		String UnitName = txtPuUnit.getText();
 		log.info(UnitName);
 	}
 	
 	
 		
-	public void SelectValuedropDown(String dropdownValue)
+	public void SelectValuedropDown(String dropdownValue) throws Exception
 	{
 		txtsrch.click();
 		WebWait(txtsrch);
 		log.info(dropdownValue);
+		Thread.sleep(1000);
 		txtsrch.sendKeys(dropdownValue);
 		WebWait(txtsrch);
 		txtsrch.sendKeys(Keys.ARROW_DOWN);
@@ -155,6 +158,7 @@ public class MedcareRegistrationPage{
 
 	public void BasicInformation() throws Exception
 	{
+		core.waitForPageLoadComplete(driver, 15);
 		//Selecting Identifcation Type
 		WebWait(btnIdentificationType);
 		btnIdentificationType.click();
@@ -210,6 +214,7 @@ public class MedcareRegistrationPage{
 		robot.keyPress(KeyEvent.VK_PAGE_DOWN);
 				
 		//Address
+		Thread.sleep(1000);
 		WebWait(txt_Address);
 		txt_Address.click();
 		String Address = ReadExcelHashMap.getValue("Address");
@@ -250,7 +255,7 @@ public class MedcareRegistrationPage{
 		core.SelectConfirmButton(txt_Save);
 		
 		//ConfirmButton
-		//core.SelectConfirmButton(btn_Confirm);		
+		core.SelectConfirmButton(btn_Confirm);		
 		
 		RegSucessMessage();
 	}
@@ -263,9 +268,33 @@ public class MedcareRegistrationPage{
 		log.info(MrnNumber);
 		return MrnNumber;
 	}
-	public void MrnContinueYes() {
+	
+	public void MrnContinueYes() throws Exception {
+		WebWait(MRNContinueYes);
 		MRNContinueYes.click();
+		String winHandleBefore = driver.getWindowHandle();
+		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+		Thread.sleep(5000);
+		driver.switchTo().window(tabs.get(1));
+		driver.close();
+		driver.switchTo().window(winHandleBefore);
+		Thread.sleep(5000);
+		isAlertPresent();
 	}
+	public boolean isAlertPresent(){
+	    boolean foundAlert = false;
+	    WebDriverWait wait = new WebDriverWait(driver,10);
+	    try {
+	        wait.until(ExpectedConditions.alertIsPresent());
+	        foundAlert = true;
+	        Alert alt = driver.switchTo().alert();
+	        alt.accept();
+	    } catch (TimeoutException eTO) {
+	        foundAlert = false;
+	    }
+	    return foundAlert;
+	}
+	
 	public void MrnContinueNo() {
 		MRNContinueNo.click();
 	}

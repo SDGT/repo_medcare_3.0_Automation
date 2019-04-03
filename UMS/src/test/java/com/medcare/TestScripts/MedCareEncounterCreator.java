@@ -40,10 +40,10 @@ public class MedCareEncounterCreator {
 		final MedcareDashboardPage DashBoard = new MedcareDashboardPage(driver);
 		DashBoard.clickOnOPD();
 		final MedcareEncounterPage EncounterPage = new MedcareEncounterPage(driver);
-		EncounterPage.EncounterTab();
+		EncounterPage.EncounterTabSearchPatient();
+		EncounterPage.EncounterTabDetails();
 		EncounterPage.EncounterNextKin();
 		EncounterPage.EncounterPaymentEntitlementSelf();
-	//	EncounterPage.EncounterPaymentEntitlementTPP();
 	}
 
 }

@@ -10,6 +10,8 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import com.google.common.collect.Table.Cell;
+
 public class ReadExcelHashMap {
 	
 	public static final String EXCELFILELOCATION = "./Data.xlsx";
@@ -72,6 +74,7 @@ public class ReadExcelHashMap {
 		/*public static void main(String[] args) throws Exception {
 			System.out.println(getValue("urlLink"));
 			System.out.println(getValue("FrontEnd"));
+		
 		}*/
 				
 }

@@ -144,60 +144,83 @@ public class MedcareEncounterPage{
 	@FindBy(how=How.XPATH, using="//mat-icon[@mattooltip='Save']")
 	public WebElement btnSave;
 	
+	//Click on Confirm button
+	@FindBy(how=How.XPATH, using="//button[@data-automation-attribute='button-save-dialog']")
+	public WebElement ConfirmButton;
+	
+	//Click on Confirm button
+	@FindBy(how=How.XPATH, using="(//mat-icon[@mattooltip='Search'])[2]")
+	public WebElement btnSearch;
+	
+	//click on Image imgPatient
+	@FindBy(how=How.XPATH, using="//mat-cell[@class='headerPhoto mat-cell cdk-column-photo mat-column-photo ng-star-inserted']")
+	public WebElement imgPatient;
+	
+	
+	
+	
 	public void WebWait(WebElement ExplicitWait)
 	{
 		WebDriverWait wait=new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.elementToBeClickable(ExplicitWait));
 	}
 	
-	public void SelectValuedropDown(String dropdownValue)
+	public void SelectValuedropDown(String dropdownValue) throws Exception
 	{
 		txt_srch.click();
 		WebWait(txt_srch);
 		log.info(dropdownValue);
 		txt_srch.sendKeys(dropdownValue);
+		Thread.sleep(1000);
 		WebWait(txt_srch);
+		txt_srch.sendKeys(Keys.ARROW_DOWN);
 		txt_srch.sendKeys(Keys.RETURN);	
 	}	
 		
-	public void EncounterTab() throws Exception
+	public void EncounterTabSearchPatient() throws Exception
 	{
-		LoginPage.waitForPageLoadComplete(driver, 5);
+		core.waitForPageLoadComplete(driver, 15);
 		//Click on Encounter Tab
 		Thread.sleep(5000);
 		WebWait(EncounterTab);
 		EncounterTab.click();
 		
 		//Url for comparison
-		String ActualEncounterUrl = "http://medcareqa.sdglobaltech.com:4300/#/OPD/encounter";
+		String ActualEncounterUrl = "https://medcareqa.sdglobaltech.com/#/OPD/encounter";
 		String ExpectedEncounterUrl = driver.getCurrentUrl();
 		CoreClasses.CompareString(ActualEncounterUrl, ExpectedEncounterUrl);
 		
-		//Click on TextSearch Button from Search Field
-		WebWait(txt_Search_top);
-		txt_Search_top.click();
-		Thread.sleep(2000); //Application slowness
-		WebWait(txt_Mrn);
-		txt_Mrn.click();
+		//Sending Keys for Search top 
+		core.SearchPatientMRN(txt_Search_top, txt_Mrn);
+		
+		//Writing to Excel Sheet
 		
 		
 		//Type In the MRN Number for encounter creation	
-		String MrnNo = ReadExcelHashMap.getValue("MrnNumber");
+		String MrnNo = ReadExcelHashMap.getValue("MrnNumberEnc");
 		txt_Mrn.sendKeys(MrnNo);
-		
 		log.info(MrnNo);
-		
+				
 		//Press Enter
 		Thread.sleep(2000); //Application slowness
-		Robot robot = new Robot();
-		robot.keyPress(KeyEvent.VK_ENTER);
-		
+		btnSearch.click();
 		
 		//Click on Searched Mrn Number
 		SearchedMRNNo.click();
 		CoreClasses.CompareText(SearchedMRNNo, MrnNo);
-		IconClick.click();
-		
+		//IconClick.click();
+	}
+	
+	public void RegEncMerging() throws Exception
+	{
+		Thread.sleep(3000);
+		imgPatient.click();		
+	}
+	
+	
+	public void EncounterTabDetails() throws Exception
+	{
+		//*********
 		//Select the Encounter Type
 		WebWait(EncounterTypes);
 		EncounterTypes.click();
@@ -225,8 +248,6 @@ public class MedcareEncounterPage{
 		//Select the Doctor - Search button is not there
 		WebWait(Doctor);
 		Doctor.click();
-		/*String Doctor = ReadExcelHashMap.getValue("Doctor");
-		SelectValuedropDown(Doctor);*/
 		WebWait(WorkAroundForDoctor);		
 		WorkAroundForDoctor.click();		
 		
@@ -308,14 +329,15 @@ public class MedcareEncounterPage{
 		//Add Button
 		btnAdd.click();
 		
-		//Click on Next button after 
+		//Click on Next button 
 		core.SelectConfirmButton(NextEncounterTab);	
+		
 	}
 
 	public void EncounterPaymentEntitlementSelf() 
 	{
 		btnSave.click();
-		
+		core.SelectConfirmButton(ConfirmButton);
 	}
 
 	public void EncounterPaymentEntitlementTPP() 

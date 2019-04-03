@@ -2,13 +2,11 @@ package com.ums.medcarepages;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -31,19 +29,7 @@ public class MedcareLoginPage
 			PageFactory.initElements(driver, this);
 			this.driver = driver;
 		}
-		
-		public void WebWait(WebElement ExplicitWait)
-		{
-			WebDriverWait wait = new WebDriverWait(driver, 18);
-			wait.until(ExpectedConditions.elementToBeClickable(ExplicitWait));
-		}
-		
-		public void waitForPageLoadComplete(WebDriver driver, int specifiedTimeout) {
-		    Wait<WebDriver> wait = new WebDriverWait(driver, 15);
-		    wait.until(driver1 -> String
-		            .valueOf(((JavascriptExecutor) driver1).executeScript("return document.readyState"))
-		            .equals("complete"));
-		}
+			
 		
 		public void loginSuperUser() throws Exception, InterruptedException
 		{

@@ -2,24 +2,44 @@ package com.ums.utilities;
 
 import static org.testng.Assert.assertEquals;
 
-import java.awt.AWTException;
-import java.awt.Robot;
 import java.util.Random;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CoreClasses{
-	public static WebDriver driver;
+	public WebDriver driver;
+	
 	public CoreClasses(WebDriver driver) 
 	{
 	PageFactory.initElements(driver, this);
 	this.driver=driver;
 	}
+	
+	//*********************Public WebElement**************
+	public WebElement txt_Search_top;
+	
+	
+	
+	
 	public static Logger log = Logger.getLogger(Loggers.class.getName());
+	
+	/**
+	 * 
+	 * @param ExplicitWait
+	 */
+	public void WebWait(WebElement ExplicitWait)
+	{
+		WebDriverWait wait = new WebDriverWait(driver, 18);
+		wait.until(ExpectedConditions.elementToBeClickable(ExplicitWait));
+	}
 	
 	/**
 	 * 
@@ -58,7 +78,7 @@ public class CoreClasses{
 		}
 		else
 		{
-			log.info("Button is not Enabled");
+			log.info("Button is not Enabled ");
 		}
 	}
 	
@@ -98,6 +118,33 @@ public class CoreClasses{
 		int FirstSixDigits = 997272;
 		String NRICValue = Integer.toString(FirstSixDigits) + Integer.toString(LastSixDigits);
 		return NRICValue;
+	}
+	
+	/**
+	 * 
+	 * @return Switching tabs
+	 * @throws Exception 
+	 */
+	public void SearchPatientMRN(WebElement txt_Search_top,WebElement txt_Mrn) throws Exception
+	{
+		Thread.sleep(2000); //Application slowness
+		txt_Search_top.click();//Click on TextSearch Button from Search Field
+		Thread.sleep(2000); //Application slowness
+		txt_Mrn.click();	//Mrn Click		
+	}
+	
+	
+	
+	/**
+	 * 
+	 * @param driver
+	 * @param specifiedTimeout
+	 */
+	public void waitForPageLoadComplete(WebDriver driver, int specifiedTimeout) {
+	    Wait<WebDriver> wait = new WebDriverWait(driver, 15);
+	    wait.until(driver1 -> String
+	            .valueOf(((JavascriptExecutor) driver1).executeScript("return document.readyState"))
+	            .equals("complete"));
 	}
 	
 }
